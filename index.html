@@ -2,8 +2,8 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>チーム運用ルール（朝会 / Planner）</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     :root{
       --bg:#f6f7fb;
@@ -21,33 +21,29 @@
     html, body{ height:100%; }
     body{
       margin:0;
-      font-family: system-ui, -apple-system, "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+      padding:24px;
+      font-family: system-ui, -apple-system, "Segoe UI",
+                   "Hiragino Kaku Gothic ProN", "Hiragino Sans",
+                   Meiryo, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.75;
+      line-height: 1.9;
     }
 
     .wrap{
       max-width: 980px;
       margin: 0 auto;
-      padding: 28px 16px 56px;
     }
 
     header{
-      margin-bottom: 14px;
+      margin-bottom: 12px;
+      padding: 0 2px;
     }
 
-    .title{
+    h1{
       font-size: 22px;
-      font-weight: 800;
+      margin: 0;
       letter-spacing: .02em;
-      margin: 0 0 6px;
-    }
-
-    .subtitle{
-      margin:0;
-      color: var(--muted);
-      font-size: 14px;
     }
 
     .card{
@@ -110,88 +106,39 @@
     }
 
     .panel{
-      padding: 18px 18px 20px;
+      padding: 18px 18px 22px;
     }
 
-    .panel[hidden]{
-      display:none;
-    }
+    .panel[hidden]{ display:none; }
 
     h2{
       font-size: 18px;
-      margin: 4px 0 10px;
+      margin: 4px 0 12px;
       letter-spacing: .01em;
     }
 
-    .hint{
-      color: var(--muted);
-      font-size: 13px;
-      margin: 0 0 12px;
-    }
-
-    .rules{
-      margin: 0;
-      padding-left: 1.2em;
-    }
-
-    .rules li{
-      margin: 8px 0;
-    }
-
-    .note{
-      margin-top: 14px;
-      padding: 12px 12px;
-      border: 1px dashed #cbd5e1;
-      background: #f8fafc;
-      border-radius: 12px;
-      color: #334155;
-      font-size: 14px;
-    }
-
-    .example{
-      margin-top: 16px;
-      border-top: 1px solid var(--line);
-      padding-top: 14px;
-    }
-
-    .example h3{
-      margin: 0 0 8px;
+    h3{
       font-size: 16px;
+      margin: 18px 0 8px;
     }
 
-    .kv{
-      display:grid;
-      grid-template-columns: 140px 1fr;
-      gap: 8px 12px;
-      padding: 12px;
-      background: #f9fafb;
-      border: 1px solid var(--line);
-      border-radius: 12px;
+    p{
+      margin: 0 0 14px;
     }
 
-    .k{ color: var(--muted); font-weight: 700; }
-    .v{ color: var(--text); font-weight: 600; }
-
-    .checklist{
-      margin: 10px 0 0;
-      padding-left: 1.2em;
-      color:#111827;
+    ul{
+      margin: 8px 0 16px;
+      padding-left: 1.3em;
     }
-    .checklist li{ margin: 6px 0; }
 
-    footer{
-      margin-top: 14px;
-      color: var(--muted);
-      font-size: 12px;
-      padding: 0 2px;
+    li{
+      margin: 8px 0;
     }
 
     /* small screens */
     @media (max-width: 520px){
-      .kv{ grid-template-columns: 1fr; }
-      .k{ font-size: 12px; }
-      .v{ font-size: 14px; }
-      .title{ font-size: 20px; }
+      body{ padding: 14px; }
+      h1{ font-size: 20px; }
     }
   </style>
 </head>
@@ -199,7 +146,7 @@
 <body>
   <div class="wrap">
     <header>
-      <h1 class="title">チーム運用ルール</h1>
+      <h1>チーム運用ルール</h1>
     </header>
 
     <main class="card">
@@ -216,39 +163,98 @@
       <section class="panel" role="tabpanel" id="panel-chokai" aria-labelledby="tab-chokai">
         <h2>朝会の進め方（運用ルール）</h2>
 
-        <ul class="rules">
+        <ul>
           <li>朝会のファシリテーターは、前回のファシリテーターが今回のファシリテーターを指名します。</li>
           <li>ファシリテーターは Microsoft Planner の「In Progress」バケットおよび期日が近い「To Do」バケットのタスクについて、戦略推進課 → キャリアデザイン課の順で進捗確認を行います。</li>
           <li>進捗確認を受けたタスクの担当者は、当該タスクの状況を「先行」「順調」「遅延」のいずれかで簡潔に回答します。詳細な経緯や背景説明は朝会では行いません。</li>
           <li>タスク内容について追加の確認やディスカッションが必要な場合は、朝会とは別途、必要に応じてミーティングを設定します。</li>
           <li>タスクの進捗確認が一通り完了した後、業務連絡や全体共有事項がないかを確認し、ある場合はその場で発言します。</li>
         </ul>
-
       </section>
 
-      <!-- Planner -->
+      <!-- Planner（※ここを“全文”で復元） -->
       <section class="panel" role="tabpanel" id="panel-planner" aria-labelledby="tab-planner" hidden>
         <h2>Microsoft Planner 運用ルール</h2>
 
-        <ul class="rules">
-          <li>キャリアデザイン課に関するタスクカードの作成は原則として、長門・島倉・野中の3名が行います。ただし、上記3名から指示があった場合に限り、他メンバーによるカード作成を可とします。</li>
-          <li>タスクの期日設定、カードのバケット移動、チェックリストの変更・更新は、各タスクの担当者が責任をもって実施します。</li>
-          <li>各バケットの定義は以下のとおりとします。
-            <ul class="checklist">
-              <li><strong>Back log</strong>：今月中に着手する予定のないタスク</li>
-              <li><strong>To do</strong>：今月中に着手予定のタスク</li>
-              <li><strong>In Progress</strong>：現在対応中のタスク</li>
-            </ul>
+        <p>
+          キャリアデザイン課に関するタスクカードの作成は、原則として長門・島倉・野中の3名が行います。
+          ただし、上記3名から明示的な指示があった場合に限り、他メンバーによるカード作成を可とします。
+        </p>
+
+        <p>
+          タスクの期日設定、カードのバケット移動、チェックリストの変更および更新については、
+          各タスクの担当者が責任をもって実施します。タスクの状態は常に最新のものを保ち、
+          実際の進捗と Planner 上の状態に乖離が生じないようにします。
+        </p>
+
+        <h3>バケットの定義</h3>
+
+        <p>
+          Planner 上の各バケットは、以下の考え方で運用します。
+          ここでいう「期間」とは、月次など、あらかじめチームで定めた運用単位を指します。
+        </p>
+
+        <ul>
+          <li>
+            <strong>Back log</strong> は、現時点では着手予定がなく、
+            今後対応が必要になる可能性はあるものの、期間内に実施する予定がないタスクを置くバケットとします。
           </li>
-          <li>継続的なタスクや、1つのタスク内で複数回の期日・対応が発生する場合は、最終期限をタスクの期限として設定し、途中の工程や個別対応はチェックリストで管理します。</li>
+          <li>
+            <strong>To Do</strong> は、期間中（例：2026年1月）に実施する予定のタスクを置くバケットとします。
+          </li>
+          <li>
+            <strong>In Progress</strong> は、現在実行中のタスクを置くバケットとします。
+          </li>
         </ul>
 
-        
-        </div>
+        <h3>期間内完了を前提とした運用</h3>
+
+        <p>
+          Planner によるタスク管理では、期間内に To Do および In Progress に存在しているタスクを、
+          期間終了までにすべて Done に移動（タスク完了）させることを目的とします。
+          未完了のタスクを次の期間へ持ち越す運用は原則として行いません。
+        </p>
+
+        <p>
+          期間内に完了できる量を前提としてタスクを管理し、
+          タスクの積み上がりが常態化しないよう注意します。
+        </p>
+
+        <h3>継続タスク・割り込みタスクの扱い</h3>
+
+        <p>
+          継続的なタスクや、1つのタスク内で複数回の対応や期日が発生する場合は、
+          最終期限をタスクの期限として設定し、途中の工程や個別対応については
+          チェックリストで管理します。
+        </p>
+
+        <p>
+          割り込みタスクが発生した場合は、既存タスクとの優先度や期日を相談したうえで追加します。
+          相談の判断材料を明確にするため、各タスクには開始日と期日を確実に設定します。
+        </p>
+
+        <p>
+          期限が未確定であることを理由に、とりあえず月末日を設定するような運用は行いません。
+          開始日および期日は、実際の作業予定に基づいて設定し、必要に応じて見直します。
+        </p>
+
+        <h3>タスク量とコミュニケーションについて</h3>
+
+        <p>
+          無暗にタスクを追加すると、期間中のタスク量が増え続け、
+          結果としてタスク割り振りのバランスが崩れやすくなります。
+          新たにタスクを追加する際は、期間内に完了できる見込みがあるか、
+          既存タスクと両立できるかを前提に判断します。
+        </p>
+
+        <p>
+          タスクを依頼する際は、Planner 上で単に Request に追加するだけで完結させず、
+          対人コミュニケーションを重視します。
+          依頼の背景、優先度、期待する完了基準を口頭またはチャットで共有し、
+          担当者の状況も踏まえたうえで合意を取ってからタスク化します。
+        </p>
       </section>
     </main>
-
-
   </div>
 
   <script>
@@ -293,4 +299,3 @@
   </script>
 </body>
 </html>
-
