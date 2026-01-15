@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>チーム運用ルール（朝会 / Planner）</title>
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --accent:#2563eb;
+      --accent2:#1d4ed8;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --radius: 16px;
+    }
+
+    *{ box-sizing:border-box; }
+    html, body{ height:100%; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 16px 56px;
+    }
+
+    header{
+      margin-bottom: 14px;
+    }
+
+    .title{
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: .02em;
+      margin: 0 0 6px;
+    }
+
+    .subtitle{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    /* Tabs */
+    .tabs{
+      display:flex;
+      gap:8px;
+      padding: 10px;
+      background: #f9fafb;
+      border-bottom: 1px solid var(--line);
+      flex-wrap: wrap;
+    }
+
+    .tab-btn{
+      appearance:none;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 14px;
+      transition: .15s ease;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      user-select:none;
+    }
+
+    .tab-btn:hover{
+      border-color: #cbd5e1;
+      transform: translateY(-1px);
+    }
+
+    .tab-btn[aria-selected="true"]{
+      border-color: rgba(37,99,235,.35);
+      background: rgba(37,99,235,.08);
+      color: var(--accent2);
+    }
+
+    .tab-pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      font-size: 12px;
+      background: rgba(37,99,235,.10);
+      color: var(--accent2);
+      border: 1px solid rgba(37,99,235,.22);
+    }
+
+    .panel{
+      padding: 18px 18px 20px;
+    }
+
+    .panel[hidden]{
+      display:none;
+    }
+
+    h2{
+      font-size: 18px;
+      margin: 4px 0 10px;
+      letter-spacing: .01em;
+    }
+
+    .hint{
+      color: var(--muted);
+      font-size: 13px;
+      margin: 0 0 12px;
+    }
+
+    .rules{
+      margin: 0;
+      padding-left: 1.2em;
+    }
+
+    .rules li{
+      margin: 8px 0;
+    }
+
+    .note{
+      margin-top: 14px;
+      padding: 12px 12px;
+      border: 1px dashed #cbd5e1;
+      background: #f8fafc;
+      border-radius: 12px;
+      color: #334155;
+      font-size: 14px;
+    }
+
+    .example{
+      margin-top: 16px;
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+    }
+
+    .example h3{
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    .kv{
+      display:grid;
+      grid-template-columns: 140px 1fr;
+      gap: 8px 12px;
+      padding: 12px;
+      background: #f9fafb;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    .k{ color: var(--muted); font-weight: 700; }
+    .v{ color: var(--text); font-weight: 600; }
+
+    .checklist{
+      margin: 10px 0 0;
+      padding-left: 1.2em;
+      color:#111827;
+    }
+    .checklist li{ margin: 6px 0; }
+
+    footer{
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 0 2px;
+    }
+
+    /* small screens */
+    @media (max-width: 520px){
+      .kv{ grid-template-columns: 1fr; }
+      .k{ font-size: 12px; }
+      .v{ font-size: 14px; }
+      .title{ font-size: 20px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <h1 class="title">チーム運用ルール</h1>
+    </header>
+
+    <main class="card">
+      <div class="tabs" role="tablist" aria-label="ルール切り替え">
+        <button class="tab-btn" role="tab" id="tab-chokai" aria-controls="panel-chokai" aria-selected="true" tabindex="0">
+          <span class="tab-pill">1</span> 朝会
+        </button>
+        <button class="tab-btn" role="tab" id="tab-planner" aria-controls="panel-planner" aria-selected="false" tabindex="-1">
+          <span class="tab-pill">2</span> Planner
+        </button>
+      </div>
+
+      <!-- 朝会 -->
+      <section class="panel" role="tabpanel" id="panel-chokai" aria-labelledby="tab-chokai">
+        <h2>朝会の進め方（運用ルール）</h2>
+
+        <ul class="rules">
+          <li>朝会のファシリテーターは、前回のファシリテーターが次回のファシリテーターを指名します。</li>
+          <li>ファシリテーターは Microsoft Planner の「In Progress」バケットおよび期日が近い「To Do」バケットのタスクについて、戦略推進課 → キャリアデザイン課の順で進捗確認を行います。</li>
+          <li>進捗確認を受けたタスクの担当者は、当該タスクの状況を「先行」「順調」「遅延」のいずれかで簡潔に回答します。詳細な経緯や背景説明は朝会では行いません。</li>
+          <li>タスク内容について追加の確認やディスカッションが必要な場合は、朝会とは別途、必要に応じてミーティングを設定します。</li>
+          <li>タスクの進捗確認が一通り完了した後、業務連絡や全体共有事項がないかを確認し、ある場合はその場で発言します。</li>
+        </ul>
+
+      </section>
+
+      <!-- Planner -->
+      <section class="panel" role="tabpanel" id="panel-planner" aria-labelledby="tab-planner" hidden>
+        <h2>Microsoft Planner 運用ルール</h2>
+
+        <ul class="rules">
+          <li>キャリアデザイン課に関するタスクカードの作成は原則として、長門・島倉・野中の3名が行います。ただし、上記3名から指示があった場合に限り、他メンバーによるカード作成を可とします。</li>
+          <li>タスクの期日設定、カードのバケット移動、チェックリストの変更・更新は、各タスクの担当者が責任をもって実施します。</li>
+          <li>各バケットの定義は以下のとおりとします。
+            <ul class="checklist">
+              <li><strong>Back log</strong>：今月中に着手する予定のないタスク</li>
+              <li><strong>To do</strong>：今月中に着手予定のタスク</li>
+              <li><strong>In Progress</strong>：現在対応中のタスク</li>
+            </ul>
+          </li>
+          <li>継続的なタスクや、1つのタスク内で複数回の期日・対応が発生する場合は、最終期限をタスクの期限として設定し、途中の工程や個別対応はチェックリストで管理します。</li>
+        </ul>
+
+        
+        </div>
+      </section>
+    </main>
+
+
+  </div>
+
+  <script>
+    // Accessible tabs (click + keyboard)
+    const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+    const panels = new Map(
+      tabs.map(t => [t.id, document.getElementById(t.getAttribute("aria-controls"))])
+    );
+
+    function activateTab(tab) {
+      tabs.forEach(t => {
+        const selected = (t === tab);
+        t.setAttribute("aria-selected", selected ? "true" : "false");
+        t.tabIndex = selected ? 0 : -1;
+
+        const panel = panels.get(t.id);
+        if (panel) panel.hidden = !selected;
+      });
+      tab.focus();
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => activateTab(tab));
+
+      tab.addEventListener("keydown", (e) => {
+        const idx = tabs.indexOf(tab);
+        if (e.key === "ArrowRight") {
+          e.preventDefault();
+          activateTab(tabs[(idx + 1) % tabs.length]);
+        } else if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          activateTab(tabs[(idx - 1 + tabs.length) % tabs.length]);
+        } else if (e.key === "Home") {
+          e.preventDefault();
+          activateTab(tabs[0]);
+        } else if (e.key === "End") {
+          e.preventDefault();
+          activateTab(tabs[tabs.length - 1]);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
